@@ -1,12 +1,17 @@
+import "./App.css";
+import "swiper/css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import './App.css';
+import Home from "./pages/Home";
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+]);
 function App() {
-  return (
-    <div className="App">
-  
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
