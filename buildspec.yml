@@ -3,7 +3,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 14
+      nodejs: 18.x
 
     commands:
       # install npm
@@ -19,3 +19,7 @@ artifacts:
   # notably excluded is node_modules, as this will cause overwrite error on deploy
   files:
     - build/**/*
+  base-directory: "build"
+cache:
+  paths:
+    - "node_modules/**/*"
