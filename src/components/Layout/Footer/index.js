@@ -6,7 +6,7 @@ const Footer = () => {
     <FooterWrapper>
       <div class="container text-center">
         <div class="row infor">
-          <div class="col-sm-3">
+          <div class="col-sm-12 col-lg-6 col-xl-3">
             <div className="title">NỘI THẤT MOHO</div>
             <p>
               Nội Thất MOHO là thương hiệu đến từ Savimex với gần 40 năm kinh
@@ -14,7 +14,7 @@ const Footer = () => {
               tế.
             </p>
           </div>
-          <div class="col-sm-3">
+          <div class="col-sm-12 col-lg-6 col-xl-3">
             <div className="title">DỊCH VỤ</div>
             <p>
               Chính Sách Bán Hàng Chính Sách Giao Hàng & Lắp Đặt Chính Sách Đổi
@@ -22,7 +22,7 @@ const Footer = () => {
               Review Hay Nhận Quà Ngay - MOHOment Chính Sách Đối Tác Bán Hàng
             </p>
           </div>
-          <div class="col-sm-3">
+          <div class="col-sm-12 col-lg-6 col-xl-3">
             <div className="title">THÔNG TIN LIÊN HỆ</div>
             <div className="row">
               <div class="col-2">{geoIcon}</div>

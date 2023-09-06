@@ -1,6 +1,8 @@
 import styled from "styled-components";
 const FooterWrapper = styled.div`
   margin-top: 36px;
+  border-top: 1px #ededed solid;
+  padding-top: 36px;
   .title {
     font-weight: 700;
     padding: 12px 0;

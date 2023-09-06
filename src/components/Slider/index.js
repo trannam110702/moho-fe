@@ -1,6 +1,10 @@
 import React from "react";
-import SliderWrapper from "./style";
-import { Swiper, SwiperSlide } from "swiper/react";
+import SliderWrapper, { NavigationWrapper } from "./style";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Pagination, Autoplay } from "swiper/modules";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 import Slide1 from "../../assets/imgs/slide1.webp";
 import Slide2 from "../../assets/imgs/slide2.webp";
 import Slide3 from "../../assets/imgs/slide3.webp";
@@ -10,10 +14,11 @@ const Slider = () => {
   return (
     <SliderWrapper>
       <Swiper
-        spaceBetween={50}
+        grabCursor={true}
+        modules={[Pagination, Autoplay]}
         slidesPerView={1}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
+        pagination={{ clickable: true }}
+        autoplay
       >
         <SwiperSlide>
           <div
@@ -49,5 +54,4 @@ const Slider = () => {
     </SliderWrapper>
   );
 };
-
 export default Slider;
