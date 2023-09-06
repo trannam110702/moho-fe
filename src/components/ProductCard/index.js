@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import ProductCardWrapper from "./style";
 import { star, starFill, heartIcon } from "../../assets/imgs/svgs";
 const ProductCard = ({ product }) => {
@@ -7,16 +8,18 @@ const ProductCard = ({ product }) => {
 
   return (
     <ProductCardWrapper>
-      <div className="photo">
-        <img src={img}></img>
-        <div className="discount">-{discount}%</div>
-        <div
-          className="bestseller"
-          style={{ display: bestseller ? "block" : "none" }}
-        >
-          BEST SELLER
+      <Link to="/product">
+        <div className="photo">
+          <img src={img}></img>
+          <div className="discount">-{discount}%</div>
+          <div
+            className="bestseller"
+            style={{ display: bestseller ? "block" : "none" }}
+          >
+            BEST SELLER
+          </div>
         </div>
-      </div>
+      </Link>
       <div className="infor">
         <span className="name">{name}</span>
         <div className="price">
