@@ -11850,5 +11850,13 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
 
 /*# sourceMappingURL=custom.css.map */

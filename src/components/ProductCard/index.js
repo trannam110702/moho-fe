@@ -3,15 +3,25 @@ import { Link } from "react-router-dom";
 import ProductCardWrapper from "./style";
 import { star, starFill, heartIcon } from "../../assets/imgs/svgs";
 const ProductCard = ({ product }) => {
-  const { name, price, rate, saled, colors, img, discount, bestseller } =
-    product;
-
+  const colors = product.productImagesResult.map((item) => item.colorCode);
+  const imgs = product.productImagesResult.map(
+    (item) => process.env.REACT_APP_SERVER_URL + item.productColorImage[0]
+  );
+  const {
+    name,
+    new_price,
+    old_price,
+    rate,
+    sold_amount,
+    discout_rate,
+    bestseller,
+  } = product;
   return (
     <ProductCardWrapper>
-      <Link to="/product">
+      <Link to={`/product/${product.product_id}`}>
         <div className="photo">
-          <img src={img}></img>
-          <div className="discount">-{discount}%</div>
+          <img src={imgs[0]}></img>
+          <div className="discount">-{discout_rate}%</div>
           <div
             className="bestseller"
             style={{ display: bestseller ? "block" : "none" }}
@@ -23,13 +33,13 @@ const ProductCard = ({ product }) => {
       <div className="infor">
         <span className="name">{name}</span>
         <div className="price">
-          <p className="newprice">{price}đ</p>
-          <p className="oldprice">{price}đ</p>
+          <p className="newprice">{new_price}đ</p>
+          <p className="oldprice">{old_price}đ</p>
         </div>
         <div className="row">
           <div className="col-6">
             <div className="rate">
-              {Array(rate)
+              {Array(rate ? rate : 5)
                 .fill("rated")
                 .concat(Array(5 - rate).fill("no-rate"))
                 .map((rate) => {
@@ -41,7 +51,7 @@ const ProductCard = ({ product }) => {
                 })}
             </div>
           </div>
-          <div className="col-6 saled">Đã bán {saled}</div>
+          <div className="col-6 saled">Đã bán {sold_amount}</div>
         </div>
         <div className="row">
           <div className="col-6 colors">

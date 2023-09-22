@@ -1,22 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css/pagination";
 import SalesWrapper, { SlideNavWrapper } from "./style";
 import ProductCard from "../ProductCard";
-import sanpham1 from "../../assets/imgs/sanpham1.webp";
 import { leftArrowIcon, rightArrowIcon } from "../../assets/imgs/svgs";
+
+import { productApi } from "../../api/mohoApi";
 const Sales = () => {
-  const product = {
-    name: "Tủ Quần Áo Gỗ Thanh Treo MOHO VIENNA Tay Nắm 201 4 Màu",
-    price: 4290000,
-    rate: 4,
-    saled: 65,
-    colors: ["red", "blue"],
-    img: sanpham1,
-    discount: 17,
-    bestseller: true,
-  };
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    const getPr = async () => {
+      const res = await productApi.getAllProduct();
+      setProducts(res);
+      console.log(res);
+    };
+    getPr();
+  }, []);
   return (
     <SalesWrapper className="container">
       <div className="header">
@@ -48,27 +48,11 @@ const Sales = () => {
         }}
       >
         <SlideNavigation />
-        <SwiperSlide>
-          <ProductCard product={product}></ProductCard>
-        </SwiperSlide>
-        <SwiperSlide>
-          <ProductCard product={product}></ProductCard>
-        </SwiperSlide>
-        <SwiperSlide>
-          <ProductCard product={product}></ProductCard>
-        </SwiperSlide>
-        <SwiperSlide>
-          <ProductCard product={product}></ProductCard>
-        </SwiperSlide>
-        <SwiperSlide>
-          <ProductCard product={product}></ProductCard>
-        </SwiperSlide>
-        <SwiperSlide>
-          <ProductCard product={product}></ProductCard>
-        </SwiperSlide>
-        <SwiperSlide>
-          <ProductCard product={product}></ProductCard>
-        </SwiperSlide>
+        {products.map((product) => (
+          <SwiperSlide>
+            <ProductCard product={product}></ProductCard>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </SalesWrapper>
   );

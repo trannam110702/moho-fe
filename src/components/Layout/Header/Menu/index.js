@@ -1,8 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import MenuWrapper, { MenuItemWrapper } from "./style";
 const menuData = [
   {
     name: "Sản phẩm",
+    path: "/product",
     children: [],
   },
   { name: "Tủ bếp" },
@@ -16,13 +18,16 @@ const Menu = () => {
   return (
     <MenuWrapper className="container">
       {menuData.map((item) => {
-        return <MenuItem>{item.name}</MenuItem>;
+        return <MenuItem path={item.path}>{item.name}</MenuItem>;
       })}
     </MenuWrapper>
   );
 };
 const MenuItem = (props) => {
-  console.log(props);
-  return <MenuItemWrapper>{props.children}</MenuItemWrapper>;
+  return (
+    <MenuItemWrapper>
+      <Link to={props.path}>{props.children}</Link>
+    </MenuItemWrapper>
+  );
 };
 export default Menu;

@@ -1,214 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import HomeWrapper from "./style";
 import Layout from "../../components/Layout";
 import Slider from "../../components/Slider";
 import Rooms from "../../components/Rooms";
 import Sales from "../../components/Sales";
 import ProductList from "../../components/ProductList";
-import sanpham1 from "../../assets/imgs/sanpham1.webp";
+
+import { productApi } from "../../api/mohoApi";
 const Home = () => {
-  const products = [
-    {
-      name: "Tủ Quần Áo Gỗ Thanh Treo MOHO VIENNA Tay Nắm 201 4 Màu",
-      price: 4290000,
-      rate: 4,
-      saled: 65,
-      colors: ["red", "blue"],
-      img: sanpham1,
-      discount: 17,
-      bestseller: true,
-    },
-    {
-      name: "Tủ Quần Áo Gỗ Thanh Treo MOHO VIENNA Tay Nắm 201 4 Màu",
-      price: 4290000,
-      rate: 4,
-      saled: 65,
-      colors: ["red", "blue"],
-      img: sanpham1,
-      discount: 17,
-      bestseller: true,
-    },
-    {
-      name: "Tủ Quần Áo Gỗ Thanh Treo MOHO VIENNA Tay Nắm 201 4 Màu",
-      price: 4290000,
-      rate: 4,
-      saled: 65,
-      colors: ["red", "blue"],
-      img: sanpham1,
-      discount: 17,
-      bestseller: true,
-    },
-    {
-      name: "Tủ Quần Áo Gỗ Thanh Treo MOHO VIENNA Tay Nắm 201 4 Màu",
-      price: 4290000,
-      rate: 4,
-      saled: 65,
-      colors: ["red", "blue"],
-      img: sanpham1,
-      discount: 17,
-      bestseller: true,
-    },
-    {
-      name: "Tủ Quần Áo Gỗ Thanh Treo MOHO VIENNA Tay Nắm 201 4 Màu",
-      price: 4290000,
-      rate: 4,
-      saled: 65,
-      colors: ["red", "blue"],
-      img: sanpham1,
-      discount: 17,
-      bestseller: true,
-    },
-    {
-      name: "Tủ Quần Áo Gỗ Thanh Treo MOHO VIENNA Tay Nắm 201 4 Màu",
-      price: 4290000,
-      rate: 4,
-      saled: 65,
-      colors: ["red", "blue"],
-      img: sanpham1,
-      discount: 17,
-      bestseller: true,
-    },
-    {
-      name: "Tủ Quần Áo Gỗ Thanh Treo MOHO VIENNA Tay Nắm 201 4 Màu",
-      price: 4290000,
-      rate: 4,
-      saled: 65,
-      colors: ["red", "blue"],
-      img: sanpham1,
-      discount: 17,
-      bestseller: true,
-    },
-    {
-      name: "Tủ Quần Áo Gỗ Thanh Treo MOHO VIENNA Tay Nắm 201 4 Màu",
-      price: 4290000,
-      rate: 4,
-      saled: 65,
-      colors: ["red", "blue"],
-      img: sanpham1,
-      discount: 17,
-      bestseller: true,
-    },
-    {
-      name: "Tủ Quần Áo Gỗ Thanh Treo MOHO VIENNA Tay Nắm 201 4 Màu",
-      price: 4290000,
-      rate: 4,
-      saled: 65,
-      colors: ["red", "blue"],
-      img: sanpham1,
-      discount: 17,
-      bestseller: true,
-    },
-    {
-      name: "Tủ Quần Áo Gỗ Thanh Treo MOHO VIENNA Tay Nắm 201 4 Màu",
-      price: 4290000,
-      rate: 4,
-      saled: 65,
-      colors: ["red", "blue"],
-      img: sanpham1,
-      discount: 17,
-      bestseller: true,
-    },
-    {
-      name: "Tủ Quần Áo Gỗ Thanh Treo MOHO VIENNA Tay Nắm 201 4 Màu",
-      price: 4290000,
-      rate: 4,
-      saled: 65,
-      colors: ["red", "blue"],
-      img: sanpham1,
-      discount: 17,
-      bestseller: true,
-    },
-    {
-      name: "Tủ Quần Áo Gỗ Thanh Treo MOHO VIENNA Tay Nắm 201 4 Màu",
-      price: 4290000,
-      rate: 4,
-      saled: 65,
-      colors: ["red", "blue"],
-      img: sanpham1,
-      discount: 17,
-      bestseller: true,
-    },
-    {
-      name: "Tủ Quần Áo Gỗ Thanh Treo MOHO VIENNA Tay Nắm 201 4 Màu",
-      price: 4290000,
-      rate: 4,
-      saled: 65,
-      colors: ["red", "blue"],
-      img: sanpham1,
-      discount: 17,
-      bestseller: true,
-    },
-    {
-      name: "Tủ Quần Áo Gỗ Thanh Treo MOHO VIENNA Tay Nắm 201 4 Màu",
-      price: 4290000,
-      rate: 4,
-      saled: 65,
-      colors: ["red", "blue"],
-      img: sanpham1,
-      discount: 17,
-      bestseller: true,
-    },
-    {
-      name: "Tủ Quần Áo Gỗ Thanh Treo MOHO VIENNA Tay Nắm 201 4 Màu",
-      price: 4290000,
-      rate: 4,
-      saled: 65,
-      colors: ["red", "blue"],
-      img: sanpham1,
-      discount: 17,
-      bestseller: true,
-    },
-    {
-      name: "Tủ Quần Áo Gỗ Thanh Treo MOHO VIENNA Tay Nắm 201 4 Màu",
-      price: 4290000,
-      rate: 4,
-      saled: 65,
-      colors: ["red", "blue"],
-      img: sanpham1,
-      discount: 17,
-      bestseller: true,
-    },
-    {
-      name: "Tủ Quần Áo Gỗ Thanh Treo MOHO VIENNA Tay Nắm 201 4 Màu",
-      price: 4290000,
-      rate: 4,
-      saled: 65,
-      colors: ["red", "blue"],
-      img: sanpham1,
-      discount: 17,
-      bestseller: true,
-    },
-    {
-      name: "Tủ Quần Áo Gỗ Thanh Treo MOHO VIENNA Tay Nắm 201 4 Màu",
-      price: 4290000,
-      rate: 4,
-      saled: 65,
-      colors: ["red", "blue"],
-      img: sanpham1,
-      discount: 17,
-      bestseller: true,
-    },
-    {
-      name: "Tủ Quần Áo Gỗ Thanh Treo MOHO VIENNA Tay Nắm 201 4 Màu",
-      price: 4290000,
-      rate: 4,
-      saled: 65,
-      colors: ["red", "blue"],
-      img: sanpham1,
-      discount: 17,
-      bestseller: true,
-    },
-    {
-      name: "Tủ Quần Áo Gỗ Thanh Treo MOHO VIENNA Tay Nắm 201 4 Màu",
-      price: 4290000,
-      rate: 4,
-      saled: 65,
-      colors: ["red", "blue"],
-      img: sanpham1,
-      discount: 17,
-      bestseller: true,
-    },
-  ];
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    const getPr = async () => {
+      window.scrollTo(0, 0);
+      const res = await productApi.getAllProduct();
+      setProducts(res);
+      console.log(res);
+    };
+    getPr();
+  }, []);
   return (
     <HomeWrapper>
       <Layout>

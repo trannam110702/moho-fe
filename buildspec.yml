@@ -8,6 +8,7 @@ phases:
     commands:
       # install npm
       - npm install
+      - echo "📦 installing packages..."
 
   build:
     commands:

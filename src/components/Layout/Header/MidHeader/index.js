@@ -7,7 +7,7 @@ import { accountIcon, cartIcon, heartIcon } from "../../../../assets/imgs/svgs";
 const MidHeader = () => {
   return (
     <MidHeaderWrapper className="container">
-      <a href="https://www.facebook.com/profile.php?id=100010648657847">
+      <a href="/">
         <img src={Logo} id="header-logo"></img>
       </a>
       <SearchBar>
