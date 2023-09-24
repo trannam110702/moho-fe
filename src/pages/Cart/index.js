@@ -9,22 +9,31 @@ import { productApi, cartApi } from "../../api/mohoApi";
 import { star, starFill, heartIcon } from "../../assets/imgs/svgs";
 import { formatCurrency } from "../../ultils";
 const Cart = () => {
-  const [cartData, setCartData] = useState(null);
+  const [cartData, setCartData] = useState("");
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    const getCart = async () => {
-      const cartData = await cartApi.getAll();
-      setCartData(cartData);
-      setLoading(false);
-    };
-    getCart();
+    try {
+      const getCart = async () => {
+        const cart = await cartApi.getAll();
+        console.log(cart);
+        setCartData(cart);
+        setLoading(false);
+      };
+      getCart();
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
   return (
     <CartWrapper>
       <Layout>
         <div className="container main">
           <Loading loading={loading}></Loading>
-          {cartData && <CartDetail cart={cartData} />}
+          {typeof cartData === "object" ? (
+            <CartDetail cart={cartData} />
+          ) : (
+            <div>Empty</div>
+          )}
         </div>
       </Layout>
     </CartWrapper>
@@ -32,7 +41,6 @@ const Cart = () => {
 };
 
 const CartDetail = ({ cart }) => {
-  console.log(cart);
   const [loading, setLoading] = useState(true);
   const [cartData, setCartData] = useState(null);
   useEffect(() => {
