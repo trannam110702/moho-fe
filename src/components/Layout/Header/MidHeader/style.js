@@ -41,7 +41,7 @@ export const SearchBar = styled.div`
 export const UtilityBar = styled.div`
   display: flex;
   margin: 0 12px;
-  div {
+  a {
     padding: 10px;
     svg {
       scale: 1.3;

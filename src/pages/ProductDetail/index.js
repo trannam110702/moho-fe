@@ -5,7 +5,7 @@ import ProductDetailWrapper from "./style";
 import Layout from "../../components/Layout";
 import Loading from "../../components/Loading";
 
-import { productApi } from "../../api/mohoApi";
+import { productApi, cartApi } from "../../api/mohoApi";
 import { star, starFill, heartIcon } from "../../assets/imgs/svgs";
 import { formatCurrency } from "../../ultils";
 const ProductDetail = () => {
@@ -33,12 +33,11 @@ const ProductDetail = () => {
 };
 
 export const Gallery = ({ product }) => {
-  console.log(product);
+  const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState(product.productImagesResult[0]);
   const [curentImage, setCurentImage] = useState(
     `${process.env.REACT_APP_SERVER_URL}${color.productColorImage[0]}`
   );
-  console.log(product);
   useEffect(() => {
     setCurentImage(
       `${process.env.REACT_APP_SERVER_URL}${color.productColorImage[0]}`
@@ -128,8 +127,30 @@ export const Gallery = ({ product }) => {
                 Chống thấm, cong vênh, trầy xước, mối mọt
               </i>
             </div>
+            <div className="quantity">
+              <div
+                className="minus"
+                onClick={() =>
+                  setQuantity((prev) => (prev === 1 ? prev : prev - 1))
+                }
+              >
+                -
+              </div>
+              <div className="current">{quantity}</div>
+              <div
+                className="plus"
+                onClick={() => setQuantity((prev) => prev + 1)}
+              >
+                +
+              </div>
+            </div>
             <div className="buttons">
-              <button className="add-to-card">Thêm vào giỏ</button>
+              <button
+                className="add-to-card"
+                onClick={() => cartApi.addToCart(product.category_id, quantity)}
+              >
+                Thêm vào giỏ
+              </button>
               <button className="buy-now">Mua ngay</button>
             </div>
           </div>

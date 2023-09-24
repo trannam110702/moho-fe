@@ -3,6 +3,7 @@ import MidHeaderWrapper, { SearchBar, UtilityBar } from "./style";
 
 import Logo from "../../../../assets/imgs/logo.webp";
 import { accountIcon, cartIcon, heartIcon } from "../../../../assets/imgs/svgs";
+import { Link } from "react-router-dom";
 
 const MidHeader = () => {
   return (
@@ -15,9 +16,9 @@ const MidHeader = () => {
         <button>Tìm</button>
       </SearchBar>
       <UtilityBar>
-        <div>{accountIcon}</div>
-        <div>{cartIcon}</div>
-        <div>{heartIcon}</div>
+        <Link>{accountIcon}</Link>
+        <Link to="/cart">{cartIcon}</Link>
+        <Link>{heartIcon}</Link>
       </UtilityBar>
     </MidHeaderWrapper>
   );

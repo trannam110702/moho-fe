@@ -1,10 +1,21 @@
 import axiosClient from "./axiosClient";
 const productApi = {
   getAllProduct: () => {
-    return axiosClient.get("product/getall");
+    return axiosClient.get("/product/getall");
   },
   getProductById: (id) => {
-    return axiosClient.get("product/" + id);
+    return axiosClient.get("/product/" + id);
   },
 };
-export { productApi };
+const cartApi = {
+  addToCart: (productId, quantity) => {
+    return axiosClient.post("/cart/add", {
+      productId,
+      quantity,
+    });
+  },
+  getAll: () => {
+    return axiosClient.get("/cart/getall");
+  },
+};
+export { productApi, cartApi };

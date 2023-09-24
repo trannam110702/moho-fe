@@ -1,13 +1,14 @@
 import axios from "axios";
 // import qs from "query-string";
-import apiConfig from "./apiConfig";
 
 const axiosClient = axios.create({
-  baseURL: apiConfig.baseUrl,
+  baseURL: process.env.REACT_APP_SERVER_URL,
   headers: {
     "Content-type": "application/json",
   },
+  withCredentials: true,
 });
+
 axiosClient.interceptors.request.use(async (config) => config);
 
 axiosClient.interceptors.response.use(

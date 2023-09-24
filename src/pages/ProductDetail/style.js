@@ -76,6 +76,17 @@ const ProductDetailWrapper = styled.div`
   .title {
     font-weight: 700;
   }
+  .quantity {
+    cursor: pointer;
+    display: flex;
+    div {
+      padding: 5px 20px;
+    }
+    .plus,
+    .minus {
+      background-color: #f5f5f5;
+    }
+  }
   .buttons {
     margin-top: 10px;
     button {
