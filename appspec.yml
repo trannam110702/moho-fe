@@ -5,10 +5,10 @@ files:
     destination: /home/ubuntu/moho-fe
 hooks:
   BeforeInstall:
-    - location: /home/ubuntu/scripts/before_install.sh
+    - location: scripts/before_install.sh
       timeout: 300
       runas: ubuntu
   ApplicationStart:
-    - location: /home/ubuntu/scripts/application_start.sh
+    - location: scripts/application_start.sh
       timeout: 300
       runas: ubuntu
