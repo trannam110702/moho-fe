@@ -7,4 +7,4 @@ sudo chmod -R 777 /home/ubuntu/moho-fe
 cd /home/ubuntu/moho-fe
 
 #start our node app in the background
-nginx -s reload
+sudo nginx -s reload
